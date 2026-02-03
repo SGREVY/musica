@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproductor</title>
+<link rel="stylesheet" href="player.css">
+</head>
+
+<body>
+
+<div class="player-card">
+
+  <img src="img/shoka.png" class="cover">
+
+  <h2>SHOKA/h2>
+  <p>Ado</p>
+
+  <audio id="audio" src="cancion.mp3"></audio>
+
+  <button id="playBtn">▶</button>
+
+  <input type="range" id="progress" value="0">
+
+</div>
+
+<script>
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+
+playBtn.onclick = () => {
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = "⏸";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶";
+  }
+};
+
+audio.addEventListener("timeupdate", () => {
+  progress.max = audio.duration;
+  progress.value = audio.currentTime;
+});
+
+progress.oninput = () => {
+  audio.currentTime = progress.value;
+};
+
+audio.onended = () => playBtn.textContent = "▶";
+</script>
+
+</body>
+</html>

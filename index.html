@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navbar + Carousel</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1db954">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="img/ado-ado-cute.gif" alt="logo">
+    <span class="nav-title">Mi Sitio</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="player.html">Ado</a>
+    <a href="player2.html">Yuqi</a>
+  </div>
+</nav>
+
+
+
+<div class="carousel">
+
+  <div class="slides" id="slides">
+
+    <div class="slide">
+      <div class="slide-content">
+        <img src="img/ado.png">
+        <div class="text">
+          <h2>Ado</h2>
+          <p>Utattemita presenta a Ado explorando su potencia vocal a través de reinterpretaciones intensas y emocionalmente cargadas. El álbum mezcla dramatismo, energía y contrastes sonoros donde cada canción se siente como una actuación teatral. Las interpretaciones destacan por cambios de tono agresivos y suaves, mostrando versatilidad y carácter. Es un trabajo pensado para quienes disfrutan voces expresivas, atmósferas oscuras y arreglos modernos con gran impacto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-content">
+        <img src="img/yuqi.png">
+        <div class="text">
+          <h2>Yuqi</h2>
+          <p>YUQ1 muestra a Yuqi en una faceta más personal y artística, combinando pop moderno con influencias alternativas y emocionales. El álbum equilibra temas introspectivos con ritmos pegadizos, resaltando su color vocal único y presencia carismática. Cada pista transmite identidad y confianza, con producción pulida y melodías memorables. Es un proyecto que conecta cercanía y fuerza artística.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dots">
+    <div class="dot active" onclick="goTo(0)"></div>
+    <div class="dot" onclick="goTo(1)"></div>
+  </div>
+
+</div>
+
+<script>
+const slides = document.getElementById("slides");
+const dots = document.querySelectorAll(".dot");
+
+function goTo(i){
+  slides.style.transform = `translateX(-${i*100}%)`;
+  dots.forEach(d => d.classList.remove("active"));
+  dots[i].classList.add("active");
+}
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+
+
+</body>
+</html>
+

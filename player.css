@@ -1,0 +1,52 @@
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#121212;
+  font-family:Arial, sans-serif;
+}
+
+.player-card{
+  background:#1e1e1e;
+  padding:30px;
+  border-radius:16px;
+  width:300px;
+  text-align:center;
+  color:white;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.cover{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+h2{
+  margin:10px 0 5px;
+}
+
+p{
+  margin:0 0 15px;
+  color:#aaa;
+}
+
+button{
+  background:#1db954;
+  border:none;
+  color:white;
+  font-size:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  cursor:pointer;
+  margin:10px 0;
+}
+
+input[type=range]{
+  width:100%;
+}
