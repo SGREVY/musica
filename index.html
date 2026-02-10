@@ -60,6 +60,15 @@
 
 </div>
 
+<div id="chat">
+  <div id="messages"> <p>escribe ayuda para ver los comandos</p></div>
+
+  <div class="chat-inputbar">
+    <input id="input" placeholder="Escribe..." />
+    <button onclick="send()">Enviar</button>
+  </div>
+</div>
+
 <script>
 const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dot");
@@ -74,6 +83,52 @@ function goTo(i){
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
+
+function send() {
+  const input = document.getElementById("input");
+  const msg = input.value.trim();
+  if(!msg) return;
+
+  addMsg(msg, "user");
+
+  let reply = "No entiendo 😅";
+
+  if (msg.toLowerCase().includes("hola")) reply = "Hola 👋";
+  if (msg.toLowerCase().includes("ayuda")) reply = "ado: información general, shoka: canción de ado, yuqi: información general, radio: canción de yuqi";
+
+  /* ===== YUQI ===== */
+  if (msg.includes("yuqi")) {
+    reply = "Song Yuqi es integrante de (G)I-DLE. Destaca por su voz grave, carisma y estilo pop/alternativo. También tiene proyectos solistas con sonido moderno y emocional.";
+  }
+
+  if (msg.includes("radio")) {
+    reply = "Radio — Yuqi 🎵\nCanción con vibra pop-rock moderna, ritmo pegadizo y tono emocional. Muestra su estilo directo y energético.";
+  }
+
+  /* ===== ADO ===== */
+  if (msg.includes("ado")) {
+    reply = "Ado es una cantante japonesa conocida por su voz poderosa y dramática. Mezcla rock, pop y teatralidad. Saltó a la fama con 'Usseewa'.";
+  }
+
+  if (msg.includes("shoka")) {
+    reply = "Shoka — Ado 🎵\nTema intenso con cambios de energía y expresión vocal fuerte. Combina dramatismo y producción moderna.";
+  }
+
+  addMsg(reply, "bot");
+
+  input.value = "";
+}
+
+function addMsg(text, who){
+  const div = document.createElement("div");
+  div.className = "msg " + (who === "user" ? "msg-user" : "msg-bot");
+  div.textContent = text;
+
+  const box = document.getElementById("messages");
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
 </script>
 
 
